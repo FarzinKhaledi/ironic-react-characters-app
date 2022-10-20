@@ -1,6 +1,9 @@
 import axios from 'axios';
+import {Routes, Route, Link} from "react-router-dom";
 import { useEffect, useState } from 'react';
 import './App.css';
+import CharacterDetails from './components/CharacterDetails';
+import CharactersList from './components/CharactersList';
 
 function App() {
 
@@ -17,17 +20,13 @@ function App() {
 
   return (
     <div className="App">
-       <h2>List of characters in our API:</h2>
+
+        <Routes>
+          <Route path='/' element={<CharactersList characters={charactersArr} />} />
+          <Route path='/characters/:characterId' element={<CharacterDetails />} />
+        </Routes>
 
 
-       {charactersArr.map( (character) => {
-        return (
-          <div className="box">
-            <h3>{character.name}</h3>
-            <p>Occupation {character.occupation}</p>
-          </div>
-          );
-       })}
 
     </div>
   );
