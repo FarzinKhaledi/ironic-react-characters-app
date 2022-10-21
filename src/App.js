@@ -15,7 +15,7 @@ function App() {
   }, []);
 
   const fetchCharacters = () => {
-    axios.get("https://ih-crud-api.herokuapp.com/characters")
+    axios.get(process.env.REACT_APP_API_URL + "/characters")
       .then(response => {
         setCharactersArr(response.data);
       })

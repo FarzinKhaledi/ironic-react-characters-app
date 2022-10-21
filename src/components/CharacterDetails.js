@@ -11,7 +11,7 @@ function CharacterDetails(props) {
 
 
   useEffect(() => {
-    axios.get("https://ih-crud-api.herokuapp.com/characters/" + characterId)
+    axios.get(`${process.env.REACT_APP_API_URL}/characters/${characterId}`)
       .then( response => {
         setDetails(response.data);
       })
@@ -20,7 +20,7 @@ function CharacterDetails(props) {
 
 
   const deleteCharacter = () => {
-    axios.delete("https://ih-crud-api.herokuapp.com/characters/" + characterId)
+    axios.delete(`${process.env.REACT_APP_API_URL}/characters/${characterId}`)
       .then( response => {
         props.callbackToFetchCharacters();
         navigate("/");
